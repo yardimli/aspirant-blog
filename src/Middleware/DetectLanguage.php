@@ -15,7 +15,7 @@ class DetectLanguage
 
         if (!$request->route('locale')){
             $routeWithoutLocale = true;
-            $locale = BinshopsConfiguration::get('DEFAULT_LANGUAGE_LOCALE');
+            $locale = env('APP_LOCALE') ?? 'zh'; //BinshopsConfiguration::get('DEFAULT_LANGUAGE_LOCALE');
         }
 
         $lang = BinshopsLanguage::where('locale', $locale)
