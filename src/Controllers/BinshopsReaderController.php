@@ -73,14 +73,17 @@ class BinshopsReaderController extends Controller
                 ->paginate(config("binshopsblog.per_page", 10));
 	        
 	        foreach ($posts as $post) {
+		        $post->category_name = '';
 		        //get post categories
 		        $categories = BinshopsCategory::join('binshops_post_categories', 'binshops_categories.id', '=', 'binshops_post_categories.category_id')
 			        ->where('binshops_post_categories.post_id', $post->id)
 			        ->get();
 		        //get category translations
+		        $categories = json_decode(json_encode($categories), true);
 		        foreach ($categories as $category) {
-			        $post->category_name = BinshopsCategoryTranslation::where('category_id', $category->id)->first()->category_name ?? '';
-			        
+			        if ($post->category_name == '' || $post->category_name == null) {
+				        $post->category_name = BinshopsCategoryTranslation::where('category_id', $category['category_id'])->first()->category_name ?? '';
+			        }
 		        }
 	        }
         }
