@@ -55,7 +55,7 @@ class BinshopsLanguageAdminController extends Controller
 
     public function destroy_language(Request $request, $languageId){
 //        $lang = BinshopsLanguage::where('locale', BinshopsConfiguration::get('DEFAULT_LANGUAGE_LOCALE'))->first();
-	    $lang = BinshopsLanguage::where('locale', (env('APP_LOCALE') ?? 'zh'))->first();
+	    $lang = BinshopsLanguage::where('locale', (env('APP_LOCALE') ?? 'zh_TW'))->first();
         if ($languageId == $lang->id){
             Helpers::flash_message("The default language can not be deleted!");
             return redirect( route('binshopsblog.admin.languages.index') );

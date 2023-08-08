@@ -11,7 +11,7 @@ class LoadLanguage
 
     public function handle($request, Closure $next)
     {
-        $default_locale = (env('APP_LOCALE') ?? 'zh'); // BinshopsConfiguration::get('DEFAULT_LANGUAGE_LOCALE');
+        $default_locale = (env('APP_LOCALE') ?? 'zh_TW'); // BinshopsConfiguration::get('DEFAULT_LANGUAGE_LOCALE');
         $lang = BinshopsLanguage::where('locale', $default_locale)
             ->first();
 

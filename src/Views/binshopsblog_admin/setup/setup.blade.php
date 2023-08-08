@@ -63,10 +63,10 @@
                                                id="language_locale"
                                                required
                                                name='locale'
-                                               value="en"
+                                               value="en_US"
                                                style="display: none">
 
-                                        <input name="iso_code" value="en" id="iso_code" style="display: none">
+                                        <input name="iso_code" value="en_US" id="iso_code" style="display: none">
                                         <input name="date_format" value="YYYY/MM/DD" style="display: none">
                                         <input checked style="display: none" name="active" value="1">
 
